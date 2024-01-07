@@ -120,6 +120,7 @@ class Save {
         ];
       case IntCellValue():
         final String v = switch (numberFormat) {
+          null => NumFormat.defaultNumeric.writeInt(value),
           NumericNumFormat() => numberFormat.writeInt(value),
           _ => throw Exception(
               '${numberFormat} does not work for ${value.runtimeType}'),
@@ -129,6 +130,7 @@ class Save {
         ];
       case DoubleCellValue():
         final String v = switch (numberFormat) {
+          null => NumFormat.defaultNumeric.writeDouble(value),
           NumericNumFormat() => numberFormat.writeDouble(value),
           _ => throw Exception(
               '${numberFormat} does not work for ${value.runtimeType}'),
@@ -138,6 +140,7 @@ class Save {
         ];
       case DateTimeCellValue():
         final String v = switch (numberFormat) {
+          null => NumFormat.defaultDateTime.writeDateTime(value),
           DateTimeNumFormat() => numberFormat.writeDateTime(value),
           _ => throw Exception(
               '${numberFormat} does not work for ${value.runtimeType}'),
@@ -147,6 +150,7 @@ class Save {
         ];
       case DateCellValue():
         final String v = switch (numberFormat) {
+          null => NumFormat.standard_14.writeDate(value),
           DateTimeNumFormat() => numberFormat.writeDate(value),
           _ => throw Exception(
               '${numberFormat} does not work for ${value.runtimeType}'),
@@ -156,6 +160,7 @@ class Save {
         ];
       case TimeCellValue():
         final String v = switch (numberFormat) {
+          null => NumFormat.standard_21.writeTime(value),
           TimeNumFormat() => numberFormat.writeTime(value),
           _ => throw Exception(
               '${numberFormat} does not work for ${value.runtimeType}'),
